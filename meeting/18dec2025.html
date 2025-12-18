@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>18 December 2025</title>
+  <style>
+    body {
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    #log-container {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    
+    .timestamp {
+      color: #666666;
+    }
+    
+    .nickname {
+      color: #4fc3f7;
+      font-weight: bold;
+    }
+    
+    .join-leave {
+      color: #4caf50;
+      font-style: italic;
+    }
+    
+    .leave {
+      color: #f44336;
+    }
+    
+    .message {
+      color: #d4d4d4;
+    }
+    
+    .url {
+      color: #81c784;
+      text-decoration: underline;
+    }
+    
+    .command {
+      color: #ffb74d;
+      font-family: monospace;
+      background-color: #2d2d2d;
+      padding: 1px 3px;
+      border-radius: 2px;
+    }
+    
+    .line {
+      margin-bottom: 1px;
+    }
+    
+    @media (max-width: 1400px) {
+      body {
+        font-size: 12px;
+        padding: 12px;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      body {
+        font-size: 11px;
+        padding: 10px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="log-container"></div>
+
+<script>
+const rawLog = `[4:27:58 PM] <thelounge9598> hello!
+[4:30:01 PM] <bytes1440000> hi
+[4:41:09 PM] <thelounge9598> Is there a clear activation success criterion beyond 'no consensus bugs'? For example, specific wallets, covenant templates, or signet deployments?  If so, that's what should be organized next.
+[4:41:26 PM] <thelounge9598> I'm still uncertain what the success criteria is... 
+[4:42:52 PM] <bytes1440000> bip 119 is already active on signet
+[4:48:38 PM] → arejula27 has joined
+[4:50:07 PM] → kwsantiago has joined
+[4:50:41 PM] ← kwsantiago has left (Client Quit)
+[4:50:41 PM] → arejula27_ has joined
+[4:51:19 PM] ← arejula27_ has left (Client Quit)
+[4:54:14 PM] → arejula27_ has joined
+[4:55:31 PM] → kwsantiago has joined
+[4:55:39 PM] ← arejula27 has left (Quit: Client closed)
+[4:55:43 PM] ⓘ arejula27_ is now known as arejula27
+[4:56:49 PM] ← kwsantiago has left (Client Quit)
+[4:57:55 PM] ← thelounge9598 has left (Quit: The Lounge - https://thelounge.chat)
+[5:00:15 PM] [NOTICE] You are now logged in as 'bytes1440000'
+[5:00:16 PM] [NOTICE] Last login from: ~bytes1440@2a09:bac5:3cb9:1aa0::2a7:20 on Dec 18 16:59:46 2025 +0000.
+[5:00:22 PM] → bytes1440000 has joined
+[5:00:22 PM] ⓘ Workshops and Activation for CHECKTEMPLATEVERIFY CHECKSIGFROMSTACK
+[5:00:27 PM] <arejula27> hi
+[5:00:30 PM] → kwsantiago has joined
+[5:00:32 PM] <bytes1440000> hi
+[5:00:35 PM] <thelounge9598> hi
+[5:00:38 PM] <kwsantiago> Hi
+[5:00:43 PM] ← Guest73 has left (Client Quit)
+[5:00:57 PM] <bytes1440000> i am not sure if more people would join so lets start with some questions related to the activation
+[5:01:29 PM] <bytes1440000> which activation method should be used for bip 119? bip 9 or the one used for bip 110?
+[5:02:23 PM] <bytes1440000> bip 9 has been used for csv and segwit in the past: https://github.com/bitcoin/bips/blob/master/bip-0009/assignments.mediawiki
+[5:03:16 PM] <bytes1440000> bip 110 changed a few things in the params: https://github.com/bitcoinknots/bitcoin/pull/238/
+[5:03:53 PM] <bytes1440000> taproot used these activation params: https://github.com/bitcoin/bips/pull/1104
+[5:04:05 PM] ← kwsantiago has left (Client Quit)
+[5:04:16 PM] → kwsantiago has joined
+[5:04:52 PM] <bytes1440000> if bip 110 has some support and any probability of activation then we can use the same
+[5:05:08 PM] <arejula27> which are the disadvantages of actuvation params? i liked how taproot was activated
+[5:05:42 PM] <bytes1440000> no technical issues with any method that i shared above
+[5:05:52 PM] <bytes1440000> taproot used speedy trial which some people do not like
+[5:06:14 PM] <arejula27> so, what should we analyze to select a method?
+[5:06:36 PM] <bytes1440000> let me share one example and my preference so that you get the idea
+[5:06:43 PM] <arejula27> ok
+[5:07:02 PM] <bytes1440000> timeout = Consensus::BIP9Deployment::NO_TIMEOUT
+[5:07:02 PM] <bytes1440000> starttime = 9 January 2026 00:00 UTC
+[5:07:02 PM] <bytes1440000> threshold = 1515 / 2016 blocks (~75%, mainnet only)
+[5:07:02 PM] <bytes1440000> min_activation_height = 9 January 2027
+[5:07:02 PM] <bytes1440000> min_activation_height = 0 or 9 May 2026
+[5:07:15 PM] <kwsantiago> It appears to me that 110 has different rationale for the threshold difference.
+[5:07:28 PM] <bytes1440000> What is it?
+[5:07:55 PM] <thelounge9598> i think bip110 has zero probability of activation, but i agree... speedy trial is a bad idea
+[5:08:36 PM] <thelounge9598> bip110 has urgency and uasf vibes at its core.  none of which apply to op_ctv
+[5:08:46 PM] <bytes1440000> hmmm right
+[5:08:53 PM] <kwsantiago> 110 is about spam prevention, whereas 119 is a feature enhancement. what rationale does 119 have that could signal a similar activation method that 110 is using?
+[5:09:03 PM] <thelounge9598> op_ctv needs "the most conservative possible activation strategy ever"
+[5:09:09 PM] <thelounge9598> or people will panic again
+[5:09:20 PM] <kevkevin> hi
+[5:10:34 PM] <bytes1440000> kwsantiago: the activation used by 110 is using bit 4 and 119 can use something else so signaling will happen in parallel. it is better to do this then create 2 competing clients with diff params
+[5:10:41 PM] <thelounge9598> Use version bits with a high threshold, e.g. 90 percent, and a long signaling window, e.g. one year. Failure simply times out. No forced flag days.
+[5:10:45 PM] <bytes1440000> kevkevin: hi
+[5:11:21 PM] <bytes1440000> thelounge9598: fair enough
+[5:11:44 PM] <kevkevin> a conservative activation is prefered by me
+[5:12:16 PM] <arejula27> agree
+[5:12:21 PM] <bytes1440000> hmm so the consensus seems to be bip 9 with conservative params
+[5:12:50 PM] → laroberts has joined
+[5:13:04 PM] <thelounge9598> i think it's preferred by everyone at this point.   the case for op_ctv is :  it's the most conservative covenant.   it's the simplest possible one.  it's been on signet forever.  it's been poured over for a long time.   and we're going to put in a very slow and conservative an high-threashold activation just to ensure that technical objectors have
+[5:13:04 PM] <thelounge9598> enough time to get their digs in
+[5:13:38 PM] <kwsantiago> I think the question is using the same activation method as 110, is garnering the support for node runners to run that version. Right now 110 is more urgent and therefore has people running the UASF client. So the question is: will node runners want to run the UASF client of 119? It seems to me that less people would see the need to do so until
+[5:13:38 PM] <kwsantiago> there is greater understanding for the need for 119 activation.
+[5:15:16 PM] <thelounge9598> 119 is new and expands bitcoin's on-chain utility and potential for fee-earning transactions.   so it should immediately appeal to miners.   
+[5:15:24 PM] <arejula27> I think merging both on the same client will discourage many people from activating it and set a bad precedent for BIP 119, since BIP 110 is very controversial
+[5:15:35 PM] <bytes1440000> can you guys also share some preferences for starttime and timeout? is it okay if the signaling starts in jan 2025?
+[5:15:45 PM] <bytes1440000> sorry jan 2026
+[5:16:40 PM] <kwsantiago> What are your thoughts on 119 MASF then? I know 110 originally had some concept of MASF , but I think that was removed in the latest version? Correct me if I'm wrong
+[5:17:02 PM] <thelounge9598> i would prefer april. i have no serious expectation of this getting merged, even if conservative, without a long, drawn out debate over true readiness.  someone is gonna ask for fuzz tests.
+[5:17:14 PM] <thelounge9598> later is better.
+[5:18:10 PM] <thelounge9598> imo: i think 110 is kinda irrelevant to the discussion
+[5:18:29 PM] <bytes1440000> kwsantiago: bip 9 is masf
+[5:18:33 PM] <arejula27> Agreed, later is better, but  make some noise in the meantime so it doesn't look rushed in April, since for many people this would be the first time they hear about it
+[5:18:45 PM] <thelounge9598> i guess that's fair.
+[5:19:15 PM] <thelounge9598> do we need a new BIP or just revise the existing BIP?
+[5:19:56 PM] <bytes1440000> i will work on the code which already exists and just need to add params for testnet and mainnet
+[5:20:00 PM] <bytes1440000> not sure about the bip
+[5:20:17 PM] <thelounge9598> i'll work on revising the bip or asking if we need to submit a new one
+[5:21:00 PM] <bytes1440000> great
+[5:21:04 PM] <thelounge9598> april + 1 year + bip9 + 90% ... right?   or is april too soon to get the code+tests done, rebased and up-to-date with latest core.
+[5:21:13 PM] <arejula27> i will review the bip also
+[5:21:33 PM] <bytes1440000> april is too late lol
+[5:21:47 PM] <arejula27> i dont feel it is late, just 4 months
+[5:22:24 PM] <kwsantiago> What is the rush specifically for 119?
+[5:22:31 PM] <bytes1440000> late if you consider that bip 119 activation has been tried since 2022
+[5:23:03 PM] <bytes1440000> kwsantiago: there isn't any rush and we have been discussing this for last few years
+[5:23:22 PM] → jon_atack has joined
+[5:24:10 PM] <bytes1440000> https://rubin.io/bitcoin/2022/04/17/next-steps-bip119/
+[5:24:12 PM] <kwsantiago> "without a long, drawn out debate over true readiness.  someone is gonna ask for fuzz tests." so hasn't this been done effectively over the last few years or not?
+[5:24:44 PM] <bytes1440000> the bip implementation has the tests and its active on signet
+[5:25:24 PM] <bytes1440000> https://github.com/bitcoin/bitcoin/pull/31989/commits
+[5:25:25 PM] ← jonatack has left (Ping timeout: 250 seconds)
+[5:26:06 PM] <bytes1440000> bounty: https://bipbounty.org/bounties/1e101655-bad8-5147-82f7-f03145d567af/
+[5:26:34 PM] <arejula27> the bounties link does not work for me
+[5:27:42 PM] <kwsantiago> It loads a contact page?
+[5:28:03 PM] <bytes1440000> https://web.archive.org/web/20220824194740/https://bipbounty.org/bounties/1e101655-bad8-5147-82f7-f03145d567af/
+[5:29:05 PM] ← kwsantiago has left (Quit: Client closed)
+[5:29:18 PM] <bytes1440000> the pull request has some fuzz tests as well
+[5:29:19 PM] → kwsantiago has joined
+[5:29:24 PM] ← kwsantiago has left (Client Quit)
+[5:30:07 PM] <bytes1440000> https://github.com/bitcoin/bitcoin/pull/31989/changes#diff-23790a106f16f165ad579a3966ae9faa871f148ca4640bc870f6071a121d5314
+[5:30:35 PM] → kwsantiago has joined
+[5:30:48 PM] <bytes1440000> i think start time jan or feb, bip 9, 75% threshold and 1 year signaling would be fine
+[5:31:14 PM] <arejula27> why 75%?
+[5:31:47 PM] <bytes1440000> arejula27: https://bitcoin.stackexchange.com/a/49218/173944
+[5:31:48 PM] <kwsantiago> What is the relevance of the bounty? Does that need to be resolved first?
+[5:32:17 PM] <bytes1440000> kwsantiago: if anyone finds a vuln in implementation they will be rewarded
+[5:32:28 PM] <bytes1440000> bounty was created a few years ago
+[5:33:20 PM] <arejula27> Despite what it says can be tecnhicaly true, i feel the percenate is more about signaling  consensus: 75% feels low for me
+[5:33:45 PM] <bytes1440000> miners dont signal consensus or vote with the signaling
+[5:34:56 PM] <arejula27> yes, but the people layer will see 75% as a low threshold
+[5:35:32 PM] <arejula27> btw, i must leave, will try to reconnect later or read the  logged conversation
+[5:35:47 PM] <arejula27> i took some notes for this 35 min
+[5:35:49 PM] <bytes1440000> i will share the meeting logs on mailing list
+[5:36:44 PM] ← kwsantiago has left (Quit: Client closed)`;
+
+function parseIRCLog(log) {
+    const lines = log.split('\n');
+    const container = document.getElementById('log-container');
+    
+    lines.forEach(line => {
+        const lineDiv = document.createElement('div');
+        lineDiv.className = 'line';
+        
+        if (line.match(/^\[\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\]/)) {
+            const timestampMatch = line.match(/^(\[\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\])/);
+            const nicknameMatch = line.match(/^\[\d{1,2}:\d{2}:\d{2}\s?(AM|PM)?\] <([^>]+)>/);
+            
+            if (nicknameMatch) {
+                const timestamp = timestampMatch[1];
+                const nickname = nicknameMatch[nicknameMatch.length - 1];
+                const messageStart = line.indexOf('>', timestampMatch[0].length + nickname.length + 2) + 1;
+                const message = line.substring(messageStart).trim();
+                
+                const timestampSpan = document.createElement('span');
+                timestampSpan.className = 'timestamp';
+                timestampSpan.textContent = timestamp;
+                
+                const nicknameSpan = document.createElement('span');
+                nicknameSpan.className = 'nickname';
+                nicknameSpan.textContent = ` <${nickname}>`;
+                
+                const messageSpan = document.createElement('span');
+                messageSpan.className = 'message';
+                messageSpan.innerHTML = ` ${formatMessage(message)}`;
+                
+                lineDiv.appendChild(timestampSpan);
+                lineDiv.appendChild(nicknameSpan);
+                lineDiv.appendChild(messageSpan);
+            } else {
+                const timestamp = timestampMatch[1];
+                const restOfLine = line.substring(timestamp.length).trim();
+                
+                const timestampSpan = document.createElement('span');
+                timestampSpan.className = 'timestamp';
+                timestampSpan.textContent = timestamp;
+                
+                const actionSpan = document.createElement('span');
+                if (restOfLine.includes('has left') || restOfLine.includes('← ')) {
+                    actionSpan.className = 'join-leave leave';
+                } else {
+                    actionSpan.className = 'join-leave';
+                }
+                actionSpan.textContent = ` ${restOfLine}`;
+                
+                lineDiv.appendChild(timestampSpan);
+                lineDiv.appendChild(actionSpan);
+            }
+        } else {
+            lineDiv.innerHTML = formatMessage(line);
+        }
+        
+        container.appendChild(lineDiv);
+    });
+}
+
+function formatMessage(message) {
+    message = message.replace(/(https?:\/\/[^\s<>\[\]]+)/g, '<span class="url">$1</span>');
+    
+    message = message.replace(/`([^`]+)`/g, '<span class="command">$1</span>');
+    
+    return message;
+}
+
+parseIRCLog(rawLog);
+</script>
+</body>
+</html>
