@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTV Activation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0d1117;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .code-container {
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        pre {
+            color: #d4d4d4;
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .property {
+            color: #9cdcfe;
+        }
+
+        .operator {
+            color: #d4d4d4;
+        }
+
+        .number {
+            color: #b5cea8;
+        }
+
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .meeting-logs {
+            margin-top: 30px;
+            color: #c9d1d9;
+            font-size: 16px;
+            text-align: left;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .meeting-logs h2 {
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .meeting-logs a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .meeting-logs a:hover {
+            text-decoration: underline;
+        }
+
+        .meeting-date {
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+    <div class="code-container">
+        <pre><code><span class="property">consensus</span><span class="operator">.</span><span class="property">vDeployments</span><span class="operator">[</span><span class="keyword">Consensus</span><span class="operator">::</span><span class="property">DEPLOYMENT_CTV</span><span class="operator">].</span><span class="property">bit</span> <span class="operator">=</span> <span class="number">5</span><span class="operator">;</span>
+<span class="property">consensus</span><span class="operator">.</span><span class="property">vDeployments</span><span class="operator">[</span><span class="keyword">Consensus</span><span class="operator">::</span><span class="property">DEPLOYMENT_CTV</span><span class="operator">].</span><span class="property">nStartTime</span> <span class="operator">=</span> <span class="number">1774809000</span><span class="operator">;</span> <span class="comment">// 30 March 2026</span>
+<span class="property">consensus</span><span class="operator">.</span><span class="property">vDeployments</span><span class="operator">[</span><span class="keyword">Consensus</span><span class="operator">::</span><span class="property">DEPLOYMENT_CTV</span><span class="operator">].</span><span class="property">nTimeout</span> <span class="operator">=</span> <span class="number">1806345000</span><span class="operator">;</span> <span class="comment">// 30 March 2027</span>
+<span class="property">consensus</span><span class="operator">.</span><span class="property">vDeployments</span><span class="operator">[</span><span class="keyword">Consensus</span><span class="operator">::</span><span class="property">DEPLOYMENT_CTV</span><span class="operator">].</span><span class="property">min_activation_height</span> <span class="operator">=</span> <span class="number">1000000</span><span class="operator">;</span> <span class="comment">// 30 April 2027</span>
+<span class="property">consensus</span><span class="operator">.</span><span class="property">vDeployments</span><span class="operator">[</span><span class="keyword">Consensus</span><span class="operator">::</span><span class="property">DEPLOYMENT_CTV</span><span class="operator">].</span><span class="property">threshold</span> <span class="operator">=</span> <span class="number">1815</span><span class="operator">;</span> <span class="comment">// 90%</span>
+<span class="property">consensus</span><span class="operator">.</span><span class="property">vDeployments</span><span class="operator">[</span><span class="keyword">Consensus</span><span class="operator">::</span><span class="property">DEPLOYMENT_CTV</span><span class="operator">].</span><span class="property">period</span> <span class="operator">=</span> <span class="number">2016</span><span class="operator">;</span></code></pre>
+    </div>
+    
+    <div class="meeting-logs">
+        <h2>Meeting logs</h2>
+        <div class="meeting-date">18 December 2025: <a href="https://ctv-activation.github.io/meeting/18dec2025.html" target="_blank">https://ctv-activation.github.io/meeting/18dec2025.html</a></div>
+    </div>
+
+    <div class="meeting-logs">
+        <h2>Source code and binaries for the activation client</h2>
+        <div class="meeting-date">TBD</div>
+    </div>
+
+    <div class="meeting-logs">
+        <h2>FAQ</h2>
+        <div class="meeting-date">TBD</div>
+    </div>
+    </div>
+</body>
+</html>
