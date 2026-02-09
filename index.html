@@ -86,6 +86,36 @@
         .meeting-date {
             color: #8b949e;
         }
+
+        .faq-section {
+            margin-top: 30px;
+            color: #c9d1d9;
+            font-size: 14px;
+            text-align: left;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .faq-section h2 {
+            margin-bottom: 20px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+        }
+
+        .faq-question {
+            color: #58a6ff;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            color: #8b949e;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -108,10 +138,23 @@
         <div class="meeting-date">TBD</div>
     </div>
 
-    <div class="meeting-logs">
+    <div class="faq-section">
         <h2>FAQ</h2>
-        <div class="meeting-date">TBD</div>
-    </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Q. Why is CHECKSIGFROMSTACK not included in this activation client?</div>
+            <div class="faq-answer">A. CHECKSIGFROMSTACK is an interesting opcode with enough support from the developers. It could be added in an activation built on top of this and use a different version bit for signaling.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q. Can I test CHECKTEMPLATEVERIFY and build some proof of concept apps?</div>
+            <div class="faq-answer">A. Yes, you can use createvault and createpool RPC in the inquisition fork.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q. How can I download, verify and run the activation client using pre-built binaries?</div>
+            <div class="faq-answer">A. You can compile and run the activation client. Binaries will be available by the end of this month (feb 2026).</div>
+        </div>
     </div>
 </body>
 </html>
